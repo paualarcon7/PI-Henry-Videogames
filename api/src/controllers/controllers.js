@@ -1,41 +1,40 @@
-const services = require('../services/services')
+const services = require("../services/services");
 
 const allVideogames = async (req, res) => {
-    const {name} = req.query;
-    const videogames = await services.allVideogames();
-    
-     if(name) {
-         const filter = await services.filterByName(name);
-        if(!filter.length) res.status(404).send("No coincidences were found") 
-        else res.status(200).send(filter)
-    }    
-    else {  
-        res.status(200).send(videogames)
-    }
-}
+  const { name } = req.query;
+  const videogames = await services.allVideogames();
+
+  if (name) {
+    const filter = await services.filterByName(name);
+    if (filter.length === 0) res.status(404).send("No coincidences were found");
+
+    res.status(200).send(filter);
+  } else {
+    res.status(200).send(videogames);
+  }
+};
 
 const createVideogame = async (req, res) => {
-    const {name, description, platforms, genre} = req.body;
-    if(!name || !description || !platforms || !genre) {res.status(400).send("Mandatory info missing")}
-    else { 
-
-        await services.createVideogame(name, description, platforms, genre)
-        return res.status(200).send("Videogame created successfully!")
-    }
-}
-
+  const { name, description, platforms, genre } = req.body;
+  if (!name || !description || !platforms || !genre) {
+    res.status(400).send("Mandatory info missing");
+  } else {
+    await services.createVideogame(name, description, platforms, genre);
+    return res.status(200).send("Videogame created successfully!");
+  }
+};
 
 const getGenres = async (req, res) => {
-    const genres = await services.getGenres()
-    res.status(200).send(genres)
-}
+  const genres = await services.getGenres();
+  res.status(200).send(genres);
+};
 
 const videogamesById = async (req, res) => {
-    const {id} = req.params;
-    const byId = await services.filterById(id)
-    if(!id) res.status(400).send("The specified videogame was not found")
+  const { id } = req.params;
+  const byId = await services.filterById(id);
+  if (!id) res.status(400).send("The specified videogame was not found");
 
-    res.status(200).send(byId)
-}
+  res.status(200).send(byId);
+};
 
-module.exports = {allVideogames, createVideogame, getGenres, videogamesById}
+module.exports = { allVideogames, createVideogame, getGenres, videogamesById };
