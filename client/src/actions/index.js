@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GET_VIDEOGAMES, GET_GENRES } from '../actionTypes'
+import { GET_VIDEOGAMES, GET_GENRES, FILTER_GENRE } from '../actionTypes'
 
 
 
@@ -21,6 +21,13 @@ export function getGenres(){
             type: GET_GENRES,
             payload: json.data
         })
+    }
+}
+
+export function filterGenre(payload){
+    return {
+        type: FILTER_GENRE,
+        payload
     }
 }
 

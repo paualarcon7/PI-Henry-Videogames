@@ -32,6 +32,7 @@ nav ul li{
     position:relative;
     list-style: none;
     display: inline-block
+    
 }
 
 nav ul li a{
@@ -41,10 +42,14 @@ nav ul li a{
     text-decoration: none;
     line-height: 60px;
     font-size: 20px;
+    z-index: 3;
+    
 }
 
 nav ul li a:hover{
+    
     background: #243342;
+    z-index: 3;
 }
 
 nav ul ul{
@@ -53,11 +58,13 @@ nav ul ul{
     left: -100px;
     display:none;
     color: white;
-    
+    z-index: 3;
+    cursor: pointer;
 }
 
 nav ul li:hover > ul {
     display: block;
+    z-index: 3;
 }
 
 nav ul ul li{
@@ -65,6 +72,7 @@ nav ul ul li{
     float: none;
     display: list-item;
     position:relative;
+    z-index: 3;
 }
 
 

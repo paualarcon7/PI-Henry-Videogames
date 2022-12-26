@@ -1,3 +1,23 @@
 body {
     background-image: url('./img/tetris.jpg');
+    backdrop-filter: blur(2px);
+    background-repeat:repeat-y;
+}
+
+.card {
+    margin-left: 80px;
+    height: 300px;
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    float:left;
+    z-index: 1;
+}
+
+.container {
+    
+        margin-top: 5px;
+        margin-left: 400px;
+        float:left;
+        
 }
