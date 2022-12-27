@@ -54,8 +54,8 @@ export default function Home() {
                   <Card
                     name={el.name}
                     image={el.image}
-                    genres={el.genre.map((g) => {
-                      return `${g} `;
+                    genres={el.genres.map((g) => {
+                      return `${g.name} `;
                     })}
                     key={el.id}
                   ></Card>

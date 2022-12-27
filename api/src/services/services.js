@@ -43,7 +43,9 @@ const apiVideogames = async () => {
         rating: game.rating,
         platforms: game.platforms.map((p) => p.platform.name),
         image: game.background_image,
-        genre: game.genres.map((g) => g.name),
+        genres: game.genres.map((genre) => {
+          return { name: genre.name };
+        }),
       };
     });
 
@@ -59,7 +61,9 @@ const apiVideogames = async () => {
         rating: game.rating,
         platforms: game.platforms.map((p) => p.platform.name),
         image: game.background_image,
-        genre: game.genres.map((g) => g.name),
+        genres: game.genres.map((genre) => {
+          return { name: genre.name };
+        }),
       };
     });
 
@@ -75,7 +79,9 @@ const apiVideogames = async () => {
         rating: game.rating,
         platforms: game.platforms.map((p) => p.platform.name),
         image: game.background_image,
-        genre: game.genres.map((g) => g.name),
+        genres: game.genres.map((genre) => {
+          return { name: genre.name };
+        }),
       };
     });
 
@@ -91,7 +97,9 @@ const apiVideogames = async () => {
         rating: game.rating,
         platforms: game.platforms.map((p) => p.platform.name),
         image: game.background_image,
-        genre: game.genres.map((g) => g.name),
+        genres: game.genres.map((genre) => {
+          return { name: genre.name };
+        }),
       };
     });
 
@@ -107,7 +115,9 @@ const apiVideogames = async () => {
         rating: game.rating,
         platforms: game.platforms.map((p) => p.platform.name),
         image: game.background_image,
-        genre: game.genres.map((g) => g.name),
+        genres: game.genres.map((genre) => {
+          return { name: genre.name };
+        }),
       };
     });
 
