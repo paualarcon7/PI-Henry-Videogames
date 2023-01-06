@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getGenres, filterGenre, filterCreated, orderByName, orderByRating } from "../actions";
 import s from "../styles/Navbar.module.css";
+import SearchBar from "./SearchBar";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const dispatch = useDispatch();
@@ -22,7 +24,7 @@ export default function Navbar() {
     dispatch(filterCreated(e.target.innerText))
   }
   
-  
+
 
   function handleSortByName(e){
     //e.preventDefault();
@@ -56,15 +58,6 @@ export default function Navbar() {
               })}
             </ul>
           </li>
-          <li >
-            <a href="#" class={s.principalFont}>
-              Tus juegos
-            </a>
-            <ul class={s.secondaryFont}>
-              <li onClick={(e) => handleCreatedFilter(e)}>Creados por ti</li>
-              <li>Crear nuevo juego</li>
-            </ul>
-          </li>
           <li>
             <a href="#" class={s.principalFont}>
               Orden
@@ -79,7 +72,17 @@ export default function Navbar() {
               <li onClick={(e) => handleSortByRating(e)}>Menor Rating</li>
             </ul>
           </li>
+          <li >
+            <a href="#" class={s.principalFont}>
+              Tus juegos
+            </a>
+            <ul class={s.secondaryFont}>
+              <li onClick={(e) => handleCreatedFilter(e)}>Creados por ti</li>
+             <Link to="/create"><li>Crear nuevo juego</li></Link>
+            </ul>
+          </li>
         </ul>
+        
       </nav>
     </div>
   );

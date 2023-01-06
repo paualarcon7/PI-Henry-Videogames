@@ -5,16 +5,18 @@ const { API_KEY } = process.env;
 
 const api = "https://api.rawg.io/api";
 
-const createVideogame = async (name, description, platforms, genre) => {
+const createVideogame = async (name, description, platforms, genres, released, rating) => {
   try {
     const newVideogame = await Videogame.create({
       name,
       description,
       platforms,
+      released,
+      rating
     });
     const dbGenre = await Genre.findAll({
       where: {
-        name: genre,
+        name: genres,
       },
     });
     await newVideogame.addGenre(dbGenre);
@@ -123,9 +125,9 @@ const apiVideogames = async () => {
 
     const finalResponse = await res1.concat(res2, res3, res4, res5);
 
-    const finalData = await Promise.all(finalResponse).then((data) => data);
+    //const finalData = await Promise.all(finalResponse).then((data) => data);
 
-    return finalData;
+    return await Promise.all(finalResponse);
   } catch (err) {
     return err;
   }

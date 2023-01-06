@@ -15,11 +15,11 @@ const allVideogames = async (req, res) => {
 };
 
 const createVideogame = async (req, res) => {
-  const { name, description, platforms, genre } = req.body;
-  if (!name || !description || !platforms || !genre) {
+  const { name, description, platforms, genres, released, rating } = req.body;
+  if (!name || !description || !platforms || !genres || !released || !rating) {
     res.status(400).send("Mandatory info missing");
   } else {
-    await services.createVideogame(name, description, platforms, genre);
+    await services.createVideogame(name, description, platforms, genres, released, rating);
     return res.status(200).send("Videogame created successfully!");
   }
 };

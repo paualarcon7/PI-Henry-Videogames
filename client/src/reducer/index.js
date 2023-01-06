@@ -1,3 +1,4 @@
+
 import {
   GET_GENRES,
   GET_VIDEOGAMES,
@@ -5,12 +6,17 @@ import {
   FILTER_CREATED,
   ORDER_BY_NAME,
   ORDER_BY_RATING,
+  GET_BY_NAME,
+  POST_VIDEOGAME,
+  GET_DETAILS
 } from "../actionTypes";
 
 const initialState = {
+  backup: [], //estado backup con todos los juegos
   videogames: [], //estado que se va a ir modif en base al FILTRADO
   allVideogames: [], //estado que SIEMPRE va a tener todos los juegos
   genres: [],
+  detail: []
 };
 
 export default function reducer(state = initialState, action) {
@@ -18,6 +24,7 @@ export default function reducer(state = initialState, action) {
     case GET_VIDEOGAMES:
       return {
         ...state,
+        backup: action.payload,
         videogames: action.payload,
         allVideogames: action.payload,
       };
@@ -36,12 +43,12 @@ export default function reducer(state = initialState, action) {
         }),
       };
     case FILTER_GENRE:
-      const allVideogames = state.allVideogames;
+      const allVideogames = state.backup;
       const filtered = [];
 
       allVideogames.forEach((game) => {
-        game.genre.forEach((genre) => {
-          if (genre === action.payload) filtered.push(game);
+        game.genres.forEach((genre) => {
+          if (genre.name === action.payload) filtered.push(game);
         });
       });
 
@@ -50,7 +57,7 @@ export default function reducer(state = initialState, action) {
         videogames: filtered,
       };
     case FILTER_CREATED:
-      const allGames = state.allVideogames;
+      const allGames = state.backup;
       const createdFilter =
         action.payload === "Creados por ti"
           ? allGames.filter((g) => g.createdDb)
@@ -102,6 +109,22 @@ export default function reducer(state = initialState, action) {
               ...state,
               videogames: ratingSorted,
             };
+
+    case GET_BY_NAME:
+      return {
+        ...state,
+        videogames: action.payload
+      }
+    case POST_VIDEOGAME:
+      return {
+        ...state,
+      }
+    case GET_DETAILS:
+      return {
+        ...state,
+        detail: action.payload
+        
+      }
 
     default:
       return state;

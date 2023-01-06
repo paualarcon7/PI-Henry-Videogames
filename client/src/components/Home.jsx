@@ -7,6 +7,7 @@ import Navbar from "./Navbar";
 import Card from "./Card";
 import Pagination from "./Pagination";
 import s from "../styles/Home.module.css";
+import SearchBar from "./SearchBar";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -39,7 +40,7 @@ export default function Home() {
 
 
       <Navbar />
-      
+      <SearchBar/>
         <Pagination
           gamesPerPage={gamesPerPage}
           allVideogames={allVideogames.length}
